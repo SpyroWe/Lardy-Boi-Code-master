@@ -61,14 +61,18 @@ public class RobotContainer {
 private final SendableChooser<Command> autoChooser;
     
     public RobotContainer() {
-    autoChooser = AutoBuilder.buildAutoChooser("First Auto");
+     
+    
+    
+    
+        NamedCommands.registerCommand("score", effectorbase.automove());
+        NamedCommands.registerCommand("stop", effectorbase.stopautomove());
+    
+        autoChooser = AutoBuilder.buildAutoChooser("First Auto");
         SmartDashboard.putData("Auto Mode", autoChooser);
         
         
-        NamedCommands.registerCommand("score",
-            new EffectorCommand(effectorbase,
-            () -> false,
-            () -> true).withTimeout(0.5));
+        
         
 
         configureBindings();
